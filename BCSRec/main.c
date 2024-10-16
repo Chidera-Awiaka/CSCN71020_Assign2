@@ -14,7 +14,7 @@ void main() {
 
 		int menuInput;
 		menuInput = getIntInput("Enter menu option number:");
-
+		
 		switch (menuInput)
 		{
 			case 1:
@@ -83,7 +83,7 @@ void setWidth(int input, int *width) {
 }
 
 int getPerimeter(int *length, int *width) {
-	int perimeter = *length + *length + *width;
+	int perimeter = 2 * (*length + *width);
 	return perimeter;
 }
 
