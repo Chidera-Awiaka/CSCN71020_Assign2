@@ -5,6 +5,7 @@ extern "C"
 #include "../BCSRec/main.h"
 }
 
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace BCSRecUnitTest
@@ -15,7 +16,7 @@ namespace BCSRecUnitTest
 		
 		TEST_METHOD(Test_Get_Perimeter)
 		{
-			// Initilized the length and width for the test
+			// Initialized the length and width for the test
 			int length = 15; 
 			int width = 10;
 
@@ -29,7 +30,7 @@ namespace BCSRecUnitTest
 
 		TEST_METHOD(Test_Get_Area)
 		{
-			// Initilized the length and width for the test
+			// Initialized the length and width for the test
 			int length = 15;
 			int width = 10;
 
@@ -40,5 +41,55 @@ namespace BCSRecUnitTest
 			int result = getArea(&length, &width);
 			Assert::AreEqual(expectedArea, result);
 		}
+
+		TEST_METHOD(TestSetLength_Valid)
+		{
+			int length = 0;
+			int input = 25;
+			setLength(input, &length);
+			Assert::AreEqual(25, length);
+		}
+
+		TEST_METHOD(TestSetLength_BelowValid)
+		{
+			int length = 10;
+			int input = -1;
+			setLength(input, &length);
+			Assert::AreEqual(10, length); // Length should not change
+		}
+
+		TEST_METHOD(TestSetLength_AboveValid)
+		{
+			int length = 10;
+			int input = 101;
+			setLength(input, &length);
+			Assert::AreEqual(10, length); // Length should not change
+		}
+
+		TEST_METHOD(TestSetWidth_Valid)
+		{
+			int width = 0;
+			int input = 30;
+			setWidth(input, &width);
+			Assert::AreEqual(30, width);
+		}
+
+		TEST_METHOD(TestSetWidth_BelowValid)
+		{
+			int width = 20;
+			int input = 0;
+			setWidth(input, &width);
+			Assert::AreEqual(20, width); // Width should not change
+		}
+
+		TEST_METHOD(TestSetWidth_AboveValid)
+		{
+			int width = 20;
+			int input = 102;
+			setWidth(input, &width);
+			Assert::AreEqual(20, width); // Width should not change
+		}
+
+
 	};
 }
